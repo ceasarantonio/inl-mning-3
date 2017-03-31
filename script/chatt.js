@@ -15,6 +15,8 @@ window.addEventListener('load', function (event) {
   btnSend.disabled = true;
   chatTable.style.visibility = "hidden";
   btnHidden.style.visibility = "hidden";
+  btnLoggOut.disabled = true;
+  chatText.disabled = true;
 
   btnVerify.addEventListener('click', function (event) {
     firebase.auth().signInWithPopup(provider)
@@ -24,9 +26,9 @@ window.addEventListener('load', function (event) {
         h1.innerHTML = `Välkommen ${user.displayName}`;
         body.insertBefore(h1, body.childNodes[0]);
         btnLoggOut.disabled = false;
-        btnHidden.style.visibility = "visible";
         btnSend.disabled = false;
         btnVerify.disabled = true;
+        chatText.disabled = false;
         picture.setAttribute("src", user.photoURL);
         //picture.setAttribute("width", "304");
         //picture.setAttribute("height", "228");
@@ -43,6 +45,7 @@ window.addEventListener('load', function (event) {
     h1.innerHTML = `Logged Out ${user.displayName}`;
     btnLoggOut.disabled = true;
     btnVerify.disabled = false;
+    chatText.disabled = true;
     btnSend.disabled = true;
     btnHidden.style.visibility = "hidden";
     body.removeChild(picture, body.childNodes[0]);
