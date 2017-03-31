@@ -9,6 +9,7 @@ window.addEventListener('load', function (event) {
   let h1 = document.createElement('h1');
   let provider = new firebase.auth.GithubAuthProvider();
   let btnHidden = document.getElementById('btnHidden');
+  let picture = document.createElement('img');
 
   let user = '';
   btnSend.disabled = true;
@@ -26,7 +27,6 @@ window.addEventListener('load', function (event) {
         btnHidden.style.visibility = "visible";
         btnSend.disabled = false;
         btnVerify.disabled = true;
-        let picture = document.createElement('img');
         picture.setAttribute("src", user.photoURL);
         //picture.setAttribute("width", "304");
         //picture.setAttribute("height", "228");
@@ -42,7 +42,10 @@ window.addEventListener('load', function (event) {
   btnLoggOut.addEventListener('click', function (event) {
     h1.innerHTML = `Logged Out ${user.displayName}`;
     btnLoggOut.disabled = true;
+    btnVerify.disabled = false;
     btnSend.disabled = true;
+    btnHidden.style.visibility = "hidden";
+    body.removeChild(picture, body.childNodes[0]);
     
 
   });
