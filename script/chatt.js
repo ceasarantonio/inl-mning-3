@@ -33,15 +33,14 @@ window.addEventListener('load', function (event) {
         //picture.setAttribute("width", "304");
         //picture.setAttribute("height", "228");
         body.insertBefore(picture, body.childNodes[0]);
-
+        console.log('Test', user.displayName == "Daniel Karlsson")
+        if (user.displayName == "Daniel Karlsson") {
+          btnHidden.style.visibility = "visible";
+        } else {
+          btnHidden.style.visibility = "hidden";
+        };
       });
-    console.log('Test', user.displayName == "Daniel Karlsson")
-    if (user.displayName == "Daniel Karlsson"){
-      btnHidden.style.visibility = "visible";
-    };
-    else{
-      btnHidden.style.visibility = "hidden";
-    };
+
 
   })
 
@@ -53,7 +52,7 @@ window.addEventListener('load', function (event) {
     btnSend.disabled = true;
     btnHidden.style.visibility = "hidden";
     body.removeChild(picture, body.childNodes[0]);
-    
+
 
   });
 
