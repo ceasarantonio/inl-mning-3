@@ -1,5 +1,4 @@
 window.addEventListener('load', function (event) {
-  let btnLoggIn = document.getElementById('btnLoggIn');
   let btnSend = document.getElementById('btnSend');
   let chatText = document.getElementById('chattText');
   let userName = document.getElementById('userName');
@@ -16,18 +15,6 @@ window.addEventListener('load', function (event) {
   chatTable.style.visibility = "hidden";
   btnHidden.style.visibility = "hidden";
 
-  btnLoggIn.addEventListener('click', function (event) {
-    user = userName.value;
-    localStorage.setItem("userName", user);
-    userName.value = '';
-    btnLoggIn.disabled = true;
-    btnLoggOut.disabled = false;
-    btnSend.disabled = false;
-    btnVerify.disabled = true;
-    h1.innerHTML = `Välkommen ${user}`;
-    body.insertBefore(h1, body.childNodes[0]);
-  });
-
   btnVerify.addEventListener('click', function (event) {
     firebase.auth().signInWithPopup(provider)
       .then(function (result) {
@@ -36,31 +23,33 @@ window.addEventListener('load', function (event) {
         h1.innerHTML = `Välkommen ${user.displayName}`;
         body.insertBefore(h1, body.childNodes[0]);
         btnLoggOut.disabled = false;
-        btnLoggIn.disabled = true;
         btnHidden.style.visibility = "visible";
         btnSend.disabled = false;
+        btnVerify.disabled = true;
         let picture = document.createElement('img');
         picture.setAttribute("src", user.photoURL);
         //picture.setAttribute("width", "304");
         //picture.setAttribute("height", "228");
         body.insertBefore(picture, body.childNodes[0]);
-        
+
       });
+    if (user.displayName = "Daniel Karlsson"){
+      btnHidden.style.visibility = "visible";
+    };
 
   })
 
   btnLoggOut.addEventListener('click', function (event) {
-    h1.innerHTML = `Logged Out ${user}`;
-    localStorage.removeItem("userName");
+    h1.innerHTML = `Logged Out ${user.displayName}`;
     btnLoggOut.disabled = true;
-    btnLoggIn.disabled = false;
     btnSend.disabled = true;
-    btnHidden.disabled = true;
+    
+
   });
 
   btnSend.addEventListener('click', function (event) {
     let message = {
-      name: localStorage.getItem("userName"),
+      name: user.displayName,
       text: chatText.value,
       timestamp: new Date().toLocaleTimeString()
     }
