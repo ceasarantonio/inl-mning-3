@@ -35,8 +35,12 @@ window.addEventListener('load', function (event) {
         body.insertBefore(picture, body.childNodes[0]);
 
       });
-    if (user.displayName = "Daniel Karlsson"){
+    console.log('Test', user.displayName == "Daniel Karlsson")
+    if (user.displayName == "Daniel Karlsson"){
       btnHidden.style.visibility = "visible";
+    };
+    else{
+      btnHidden.style.visibility = "hidden";
     };
 
   })
