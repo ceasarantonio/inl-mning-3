@@ -1,0 +1,10 @@
+
+
+.bottom{
+  border: solid red 1px;
+}
+
+#chatTable{
+  border: solid 1px black;
+  width: 100%;
+}

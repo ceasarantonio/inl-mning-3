@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>Chatt</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="css/chatt.css">
+  <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB7QA3uf6KoK6ZwLqgnilUIQRZEvne05ow",
+      authDomain: "chat-fail.firebaseapp.com",
+      databaseURL: "https://chat-fail.firebaseio.com",
+      storageBucket: "chat-fail.appspot.com",
+      messagingSenderId: "100072382444"
+    };
+    firebase.initializeApp(config);
+
+  </script>
+  <script src="script/chatt.js"></script>
+</head>
+
+<body id="body">
+   
+  <div class="head">
+   
+    <button id="btnLoggIn">Logg in</button>
+    <input id="userName" type="text" placeholder="Username">
+    <br>
+    <button id="btnVerify">Verifiera via Github</button>
+  </div>
+
+  <div class="chatCss">
+
+  </div>
+  <div class="usersCss">
+
+  </div>
+  <div id="bottom">
+    <button id="btnSend">Send</button>
+    <input id="chattText" type="text" placeholder="Write message">
+  </div>
+  <div>
+    <button id="btnHidden">Now you can see me</button>
+  </div>
+  <div>
+    <button id="btnLoggOut">Logg out</button>
+  </div>
+  <div>
+    <table id="chatTable">
+      <td></td>
+      <td>Message</td>
+      <td>Time</td>
+    </table>
+  </div>
+
+</body>
+
+</html>
