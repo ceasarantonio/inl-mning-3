@@ -55,17 +55,20 @@ window.addEventListener('load', function (event) {
 
 
   });
+  
+  chatText.addEventListener('keypress', function(event){
+    if(chatText.value != 0){
+      btnSend.disabled = false;
+    }else{
+      btnSend.disabled = true;
+    }
+  })
 
   btnSend.addEventListener('click', function (event) {
-    let message = {
-      name: user.displayName,
-      text: chatText.value,
-      timestamp: new Date().toLocaleTimeString()
-    }
     chatTable.style.visibility = "visible";
-    let rt = document.createElement('tr');
-    rt.innerHTML = "<td>" + message.name + "<td>" + message.text + "<td>" + message.timestamp;
-    chatTable.appendChild(rt);
+    let tr = document.createElement('tr');
+    tr.innerHTML = "<td>" + message.name + "<td>" + message.text + "<td>" + message.timestamp;
+    chatTable.appendChild(tr);
     firebase.database().ref('chattLogg/').push(message);
     chatText.value = '';
 
