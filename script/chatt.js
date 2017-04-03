@@ -49,11 +49,8 @@ window.addEventListener('load', function (event) {
     btnLoggOut.disabled = true;
     btnVerify.disabled = false;
     chatText.disabled = true;
-    btnSend.disabled = true;
     btnHidden.style.visibility = "hidden";
     body.removeChild(picture, body.childNodes[0]);
-
-
   });
   
   chatText.addEventListener('keypress', function(event){
