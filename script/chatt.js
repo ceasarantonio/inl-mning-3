@@ -26,7 +26,6 @@ window.addEventListener('load', function (event) {
         h1.innerHTML = `Välkommen ${user.displayName}`;
         body.insertBefore(h1, body.childNodes[0]);
         btnLoggOut.disabled = false;
-        btnSend.disabled = false;
         btnVerify.disabled = true;
         chatText.disabled = false;
         picture.setAttribute("src", user.photoURL);
@@ -49,6 +48,7 @@ window.addEventListener('load', function (event) {
     btnLoggOut.disabled = true;
     btnVerify.disabled = false;
     chatText.disabled = true;
+    btnSend.disabled = true;
     btnHidden.style.visibility = "hidden";
     body.removeChild(picture, body.childNodes[0]);
   });
