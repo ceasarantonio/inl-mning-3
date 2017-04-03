@@ -54,7 +54,7 @@ window.addEventListener('load', function (event) {
   });
   
   chatText.addEventListener('keypress', function(event){
-    if(chatText.value != 0){
+    if(chatText.value != ''){
       btnSend.disabled = false;
     }else{
       btnSend.disabled = true;
