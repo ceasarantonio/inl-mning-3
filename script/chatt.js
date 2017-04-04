@@ -26,6 +26,7 @@ window.addEventListener('load', function (event) {
         h1.innerHTML = `Välkommen ${user.displayName}`;
         body.insertBefore(h1, body.childNodes[0]);
         btnLoggOut.disabled = false;
+        btnSend.disabled = false;
         btnVerify.disabled = true;
         chatText.disabled = false;
         picture.setAttribute("src", user.photoURL);
@@ -51,32 +52,30 @@ window.addEventListener('load', function (event) {
     btnSend.disabled = true;
     btnHidden.style.visibility = "hidden";
     body.removeChild(picture, body.childNodes[0]);
+
+
   });
-  
-  chatText.addEventListener('keypress', function(event){
-    if(chatText.value != ''){
-      btnSend.disabled = false;
-    }else{
-      btnSend.disabled = true;
-    }
-  })
 
   btnSend.addEventListener('click', function (event) {
-    chatTable.style.visibility = "visible";
-    let tr = document.createElement('tr');
-    tr.innerHTML = "<td>" + message.name + "<td>" + message.text + "<td>" + message.timestamp;
-    chatTable.appendChild(tr);
+    let message = {
+      name: user.displayName,
+      text: chatText.value,
+      timestamp: new Date().toLocaleTimeString()
+    }
     firebase.database().ref('chattLogg/').push(message);
     chatText.value = '';
 
   })
   firebase.database().ref('chattLogg/').on('value', function (snapshot) {
+    chatTable.style.visibility = "visible";
     //console.log('Laddat nya meddelande');
     snapshot.forEach(messageRef => {
-      let messageObject = messageRef.val();
+      let message = messageRef.val();
       // console.log('Innehåll ', messageObject)
-
-
+      let rt = document.createElement('tr');
+      rt.innerHTML = "<td>" + message.name + "</td><td>" + message.text + "</td><td>" + message.timestamp + "</td>";
+      
+      chatTable.appendChild(rt);
     })
   });
 
