@@ -28,6 +28,7 @@ window.addEventListener('load', function (event) {
         btnLoggOut.disabled = false;
         btnSend.disabled = false;
         btnVerify.disabled = true;
+        chatTable.style.visibility = "visible";
         chatText.disabled = false;
         picture.setAttribute("src", user.photoURL);
         //picture.setAttribute("width", "304");
@@ -51,6 +52,7 @@ window.addEventListener('load', function (event) {
     chatText.disabled = true;
     btnSend.disabled = true;
     btnHidden.style.visibility = "hidden";
+    chatTable.style.visibility = "hidden";
     body.removeChild(picture, body.childNodes[0]);
 
 
@@ -67,7 +69,7 @@ window.addEventListener('load', function (event) {
 
   })
   firebase.database().ref('chattLogg/').on('value', function (snapshot) {
-    chatTable.style.visibility = "visible";
+    //chatTable.style.visibility = "visible";
     //console.log('Laddat nya meddelande');
     snapshot.forEach(messageRef => {
       let message = messageRef.val();
